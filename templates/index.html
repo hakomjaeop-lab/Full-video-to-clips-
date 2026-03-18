@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Video Clips Maker</title> 
+</head>
+<body>
+    <h1>Upload Video to Create Clips</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="video" required>
+        <button type="submit">Upload & Clip</button>
+    </form>
+
+    {% if clips %}
+        <h2>Generated Clips:</h2>
+        <ul>
+        {% for clip in clips %}
+            <li><a href="{{ url_for('static', filename=clip) }}">{{ clip.split('/')[-1] }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
